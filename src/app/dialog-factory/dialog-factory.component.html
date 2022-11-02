@@ -1,0 +1,20 @@
+<h2>{{heading}}</h2>
+<mat-dialog-content>
+    <ng-form (ngSubmit)="submit()" class="wrapper">
+        <div class="form-row">
+            <label>Factory Name</label>
+            <input type="text" [(ngModel)]="factoryName" [textContent]="factoryName"
+                [ngModelOptions]="{standalone: true}">
+        </div>
+        <!-- <br> -->
+        <div class="form-row">
+            <label>Factory Location</label>
+            <input type="text" [(ngModel)]="location" [textContent]="location" [ngModelOptions]="{standalone: true}">
+        </div>
+
+
+        <div class="form-row">
+            <button (click)="submit()">Add</button>
+        </div>
+    </ng-form>
+</mat-dialog-content>

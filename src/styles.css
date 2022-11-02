@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+/*
+Dark black: 222831
+black : 393E46
+green : 00ADB5
+silver : EEEEEE
+*/
+
+*{
+    background-color: #393E46;
+    color: #00ADB5;
+}
+
+
+table{
+    font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table td, table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  table tr:nth-child(even){background-color: #f2f2f2;}
+
+  table tr:hover {background-color: #ddd;}
+
+  table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #222831;
+    color: #EEEEEE;
+  }
+
+  table tr{
+    text-align: center;
+  }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

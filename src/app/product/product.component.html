@@ -1,0 +1,28 @@
+<h1>Factory Name : {{factory?.factoryName}}</h1>
+
+<h3>Factory Location {{factory?.factoryLocation}}</h3>
+
+
+
+<table>
+    <tr>
+        <th>Product ID</th>
+        <th>Product </th>
+        <th>Quantity</th>
+        <th colspan="3"> Operations</th>
+    </tr>
+    <tr *ngFor="let item of products">
+        <td class="inside-table">{{item.productId}}</td>
+        <td class="inside-table">{{item.productName}}</td>
+        <td class="inside-table">{{item.quantity}}</td>
+
+
+        <td><button (click)="viewMore(item)">View More</button></td>
+        <td><button (click)="edit(item)"> Edit</button></td>
+        <td><button (click)="delete(item.productId)">
+                <fa-icon [icon]="faTrash" style="color:#EEEEEE"></fa-icon>
+                Delete
+            </button></td>
+    </tr>
+</table>
+<app-roundbtn (clicker)="add()"></app-roundbtn>
