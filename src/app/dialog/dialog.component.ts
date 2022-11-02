@@ -10,6 +10,13 @@ import { ProductService } from '../services/product-service/product.service';
 })
 export class DialogComponent implements OnInit {
 
+  onFileSelected(event: { target: { files: any; }; }) {
+    if (event.target.files) { 
+      const file = event.target.files[0];
+    }
+throw new Error('Method not implemented.');
+}
+
   productName: string ;
   productQuantity: number = 0;
   productDescription: string = "";
