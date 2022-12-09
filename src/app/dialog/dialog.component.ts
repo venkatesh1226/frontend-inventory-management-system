@@ -10,18 +10,12 @@ import { ProductService } from '../services/product-service/product.service';
 })
 export class DialogComponent implements OnInit {
 
-  onFileSelected(event: { target: { files: any; }; }) {
-    if (event.target.files) { 
-      const file = event.target.files[0];
-    }
-throw new Error('Method not implemented.');
-}
-
   productName: string ;
   productQuantity: number = 0;
   productDescription: string = "";
   heading: string = "Heading"
   disable: boolean 
+  imageLink:string=""
   constructor(
     private dialogRef: MatDialogRef<DialogComponent>,
     private productService:ProductService,
@@ -55,7 +49,7 @@ throw new Error('Method not implemented.');
       quantity: this.productQuantity,
       description: this.productDescription,
       factoryId: this.data.product.factoryId,
-      pic: []
+      pic: this.imageLink
     }
     //add product
     if (this.data.product.productId === null) {
@@ -71,6 +65,20 @@ throw new Error('Method not implemented.');
 
   validate() { 
 
+  }
+
+  fileName = ' ';
+
+  onFileSelected(e?: Event) { 
+    
+    const target = e?.target as HTMLInputElement;
+    const file: File = (target.files as FileList)[0];
+    if (file) { 
+      this.fileName = file.name;
+      const formData = new FormData();
+      formData.append("thumbnail", file);
+      this.productService.uploadFile(formData).subscribe((link: string) => (this.imageLink = link));
+    }
   }
 
 }

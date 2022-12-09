@@ -2,13 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Factory } from 'src/app/model/factory';
+import { GlobalConstants } from 'src/app/global-constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FactoryService {
 
-  private URL="http://localhost:8008"
+  // private URL = "http://localhost:8008"
+  
+  private URL = GlobalConstants.apiURL;
 
   constructor(private http: HttpClient) { }
 

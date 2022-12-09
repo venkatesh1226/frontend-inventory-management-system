@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/model/product';
+import { GlobalConstants } from 'src/app/global-constants';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  private URL = "http://localhost:8008";
+  private URL = GlobalConstants.apiURL
 
   getProducts(fid: number): Observable<Product[]> { 
    return this.http.get<Product[]>(this.URL + "/" + fid+"/products");
@@ -26,6 +27,10 @@ export class ProductService {
 
   deleteProduct(pId?: number): Observable<Product[]> { 
     return this.http.delete<Product[]>(this.URL + "/delete/" + pId);
+  }
+
+  uploadFile(f:FormData): Observable<string> { 
+    return this.http.post<string>(this.URL+"", f);
   }
 
 }

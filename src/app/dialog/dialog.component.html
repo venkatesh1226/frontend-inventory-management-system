@@ -20,12 +20,14 @@
         </textarea>
         </div>
         <!-- <br> -->
-        <div>
+        <div class="form-row">
             <label>Product Image</label>
-            <button style="margin-left: 10%;" [hidden]="disable">Browse</button>
-
-            <!-- <br> -->
+            <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload />
+            <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()"></button>
         </div>
+
+
+
         <div *ngIf="!disable" class="form-row">
             <button (click)="submit()">Submit</button>
             <!-- <input type="file" multiple value="select" #selectFile (change)="onFileSelected($event)"> -->

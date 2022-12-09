@@ -4,5 +4,5 @@ export interface Product {
     quantity: number,
     description: string,
     factoryId: number,
-    pic:BinaryType[]
+    pic:string
 }
