@@ -4,7 +4,7 @@
 }
 h2{
     align-self: center;
-    background-color: #222831;
+    /* background-color: #222831; */
 }
 
 .wrapper {
@@ -36,3 +36,17 @@ h2{
    border: 0;
   }
 
+.img-product{
+  max-width: 65%;
+}
+
+.dialog-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dialog-title button {
+  background-color: red;
+  color: white;
+}

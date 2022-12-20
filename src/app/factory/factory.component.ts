@@ -7,6 +7,8 @@ import { ProductComponent } from '../product/product.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogFactoryComponent } from '../dialog-factory/dialog-factory.component';
 
+import {  MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-factory',
   templateUrl: './factory.component.html',

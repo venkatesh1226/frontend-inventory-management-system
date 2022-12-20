@@ -8,6 +8,8 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
 
+import {  MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -46,7 +48,8 @@ export class ProductComponent implements OnInit {
         quantity: 0,
         description: "",
         factoryId: this.fid,
-        pic:null
+        picLink: "",
+        panelClass: 'my-dialog',
       }
     }
     const ref = this.dialog.open(DialogComponent, this.dialogConfig);
@@ -56,7 +59,8 @@ export class ProductComponent implements OnInit {
   viewMore(item: Product) { 
     this.dialogConfig.data = {
       edit: false,
-      product:item
+      product: item,
+      panelClass: 'my-dialog',
     }
     this.dialog.open( DialogComponent,this.dialogConfig);
   }

@@ -14,6 +14,9 @@ import { DialogComponent } from './dialog/dialog.component';
 import { MatRippleModule } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { DialogFactoryComponent } from './dialog-factory/dialog-factory.component';
+import { Dialog } from '@angular/cdk/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon'
 
 @NgModule({
   declarations: [
@@ -32,13 +35,16 @@ import { DialogFactoryComponent } from './dialog-factory/dialog-factory.componen
     MatDialogModule,
     BrowserAnimationsModule,
     MatRippleModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule,
+    MatIconModule,
+    
    
   ],
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [
-    DialogComponent
+    DialogComponent,
   ]
 })
 export class AppModule { }

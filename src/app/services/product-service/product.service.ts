@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/model/product';
 import { GlobalConstants } from 'src/app/global-constants';
+import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,11 @@ export class ProductService {
   }
 
   uploadFile(f:FormData): Observable<string> { 
-    return this.http.post<string>(this.URL+"", f);
+    return this.http.post<string>(this.URL + "/upload", f)
+  }
+
+  loadFile(id:string):Observable<Blob> { 
+    return this.http.get(this.URL + "/download/" + id, { responseType: "blob" });
   }
 
 }

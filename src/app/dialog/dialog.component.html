@@ -1,4 +1,10 @@
-<h2>{{heading}}</h2>
+<div mat-dialog-title class="dialog-title">
+    <h2>{{heading}}</h2>
+    <button mat-icon-button aria-label="close dialog" mat-dialog-close>
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+
 <mat-dialog-content>
     <ng-form (ngSubmit)="submit()" class="wrapper">
         <div class="form-row">
@@ -22,8 +28,13 @@
         <!-- <br> -->
         <div class="form-row">
             <label>Product Image</label>
-            <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload />
-            <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()"></button>
+            <div *ngIf="!disable">
+                <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload
+                    [disabled]="disable" />
+                <!-- <button mat-mini-fab color="primary" class="upload-btn" (click)="upload()" [disabled]="disable">
+                    UPLOAD</button> -->
+            </div>
+            <img class="img-product" src={{image}} ng-disabled="disable">
         </div>
 
 
