@@ -38,7 +38,7 @@ export class DialogComponent implements OnInit {
     }
     else { 
       if (data.edit == false) {
-        this.heading="Veiwing Product : "+this.productName
+        this.heading="Viewing Product : "+this.productName
        }
       else { 
         this.heading="Editing Product : "+this.productName
@@ -130,7 +130,7 @@ export class DialogComponent implements OnInit {
   }
 
   onNoClick() { 
-
+    this.dialogRef.close();
   }
 
 }

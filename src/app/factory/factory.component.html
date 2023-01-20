@@ -1,8 +1,13 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee+Spice&effect=fire-animation">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&effect=fire-animation">
-<h1 class="font-effect-fire-animation" (click)="home()">Inventory Management System</h1>
-
-
+<div class="nav">
+    <h1 (click)="home()"><b>Inventory Management System</b></h1>
+</div>
+<div class="outer" *ngIf="!isHome()">
+    <div class="inner">
+        <label (click)="home()">Back</label>
+    </div>
+</div>
 
 <table *ngIf="isHome()">
     <tr>
@@ -19,7 +24,7 @@
 
         <td><button (click)="navigate(item.factoryId)">View More</button></td>
         <td><button (click)="delete(item)">
-                <fa-icon [icon]="faTrash" style="color:#EEEEEE"></fa-icon>
+                <fa-icon [icon]="faTrash" style="color:black"></fa-icon>
                 Delete
             </button></td>
 

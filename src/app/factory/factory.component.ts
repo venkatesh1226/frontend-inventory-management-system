@@ -8,6 +8,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogFactoryComponent } from '../dialog-factory/dialog-factory.component';
 
 import {  MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 
 @Component({
   selector: 'app-factory',
@@ -30,7 +31,17 @@ export class FactoryComponent implements OnInit {
   }
 
   delete(item: Factory) { 
-    this.service.deleteFactory(item).subscribe((items: Factory[]) => (this.factories = items));
+    const confirmDelete = new MatDialogConfig();
+    confirmDelete.data = {
+      heading: item.factoryName
+    }
+    const ref = this.dialog.open(DeleteDialogComponent, confirmDelete);
+    ref.afterClosed().subscribe((res: boolean) => {
+      console.log(res)
+      if (res) { 
+        this.service.deleteFactory(item).subscribe((items: Factory[]) => (this.factories = items));
+      }
+    })
   }
 
   add() { 

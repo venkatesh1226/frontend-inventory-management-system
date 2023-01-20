@@ -1,10 +1,17 @@
-
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
 h1{
-    font-family: 'Bungee Spice', serif;
+    font-family:  serif;
     align-items: center;
     text-align: center;
     margin: 10px auto;
     display: block;
+}
+.nav{
+    width: 100%;
+    background-color: #FFC107;
+    margin-top: -5px;
+    padding:5px;
+    margin-bottom: 5px;
 }
 
 /* .inside-table{
@@ -17,3 +24,76 @@ h1{
 	background:#000;
 	padding:(6 * 1.5) 0;
 } */
+
+/* * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background: #141926;
+    font-family: Helvetica, Arial, sans-serif; 
+  } */
+  
+  .outer {
+    position: relative;
+    margin: auto;
+    width: 30px;
+    /* margin-top: 10px; */
+    cursor: pointer;
+    float: right;
+    margin-right: 30px;
+  }
+  
+  .inner {
+    width: inherit;
+    text-align: center;
+  }
+  
+  label { 
+    font-size: .8em; 
+    line-height: 4em;
+    text-transform: uppercase;
+    color: black;
+    transition: all .3s ease-in;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .inner:before, .inner:after {
+    position: absolute;
+    content: '';
+    height: 1px;
+    width: inherit;
+    background: #FFC107;
+    left: 0;
+    transition: all .3s ease-in;
+  }
+  
+  .inner:before {
+    top: 50%; 
+    transform: rotate(45deg);  
+  }
+  
+  .inner:after {  
+    bottom: 50%;
+    transform: rotate(-45deg);  
+  }
+  
+  .outer:hover label {
+    opacity: 1;
+  }
+  
+  .outer:hover .inner:before,
+  .outer:hover .inner:after {
+    transform: rotate(0);
+  }
+  
+  .outer:hover .inner:before {
+    top: 0;
+  }
+  
+  .outer:hover .inner:after {
+    bottom: 0;
+  }

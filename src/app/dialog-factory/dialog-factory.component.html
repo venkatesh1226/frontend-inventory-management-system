@@ -1,4 +1,11 @@
-<h2>{{heading}}</h2>
+<div mat-dialog-title class="dialog-title">
+    <h2>{{heading}}</h2>
+    <div class="outer" (click)="onNoClick()">
+        <div class="inner" (click)="onNoClick()">
+            <label (click)="onNoClick()">Close</label>
+        </div>
+    </div>
+</div>
 <mat-dialog-content>
     <ng-form (ngSubmit)="submit()" class="wrapper">
         <div class="form-row">

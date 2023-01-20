@@ -4,7 +4,7 @@ Dark black: 222831
 black : 393E46
 green : 00ADB5
 silver : EEEEEE
-*/
+
 
 
 
@@ -13,6 +13,7 @@ silver : EEEEEE
     color: #00ADB5;
 }
 
+*/
 
 table{
     font-family: Arial, Helvetica, sans-serif;
@@ -37,6 +38,12 @@ table td, table th {
     color: #EEEEEE;
   }
 
+  table button{
+    background: #ffbf00;
+   color: black;
+   border-color: #ffbf00;
+   border-radius: 20px;
+  }
   table tr{
     text-align: center;
   }

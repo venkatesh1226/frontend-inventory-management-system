@@ -1,12 +1,27 @@
 <div mat-dialog-title class="dialog-title">
     <h2>{{heading}}</h2>
-    <button mat-icon-button aria-label="close dialog" mat-dialog-close>
-        <mat-icon>close</mat-icon>
-    </button>
+    <div class="outer" (click)="onNoClick()">
+        <div class="inner" (click)="onNoClick()">
+            <label (click)="onNoClick()">Close</label>
+        </div>
+    </div>
 </div>
 
 <mat-dialog-content>
     <ng-form (ngSubmit)="submit()" class="wrapper">
+
+        <img class="img-product" src={{image}} *ngIf="disable">
+
+        <div class="form-row">
+            <label *ngIf="!disable">Image</label>
+            <!-- <label>Product Image</label> -->
+            <div *ngIf="!disable">
+                <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload
+                    [disabled]="disable" />
+                <!-- <button mat-mini-fab color="primary" class="upload-btn" (click)="upload()" [disabled]="disable">
+                    UPLOAD</button> -->
+            </div>
+        </div>
         <div class="form-row">
             <label>Product Name</label>
             <input type="text" [(ngModel)]="productName" [disabled]="disable" [textContent]="productName"
@@ -26,16 +41,7 @@
         </textarea>
         </div>
         <!-- <br> -->
-        <div class="form-row">
-            <label>Product Image</label>
-            <div *ngIf="!disable">
-                <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload
-                    [disabled]="disable" />
-                <!-- <button mat-mini-fab color="primary" class="upload-btn" (click)="upload()" [disabled]="disable">
-                    UPLOAD</button> -->
-            </div>
-            <img class="img-product" src={{image}} ng-disabled="disable">
-        </div>
+
 
 
 

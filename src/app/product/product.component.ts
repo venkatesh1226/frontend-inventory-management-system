@@ -9,6 +9,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
 
 import {  MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 
 @Component({
   selector: 'app-product',
@@ -74,7 +75,20 @@ export class ProductComponent implements OnInit {
     ref.afterClosed().subscribe(()=>(this.ngOnInit()));
   }
 
-  delete(pId?: number) { 
-    this.pService.deleteProduct(pId).subscribe((items:Product[]) => (this.products=items));
+  delete(product: Product) { 
+    const confirmDelete = new MatDialogConfig();
+    confirmDelete.data = {
+      heading: product.productName
+    }
+    const ref = this.dialog.open(DeleteDialogComponent, confirmDelete);
+    ref.afterClosed().subscribe((res:boolean) => {
+      if (res) { 
+        this.pService.deleteProduct(product).subscribe(() => { 
+          
+          this.pService
+            .getProducts(product.factoryId).subscribe((items: Product[]) => (this.products = items));
+        });
+      }
+    })
   }
 }

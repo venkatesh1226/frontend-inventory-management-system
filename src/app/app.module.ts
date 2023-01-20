@@ -16,7 +16,8 @@ import { FormsModule } from '@angular/forms';
 import { DialogFactoryComponent } from './dialog-factory/dialog-factory.component';
 import { Dialog } from '@angular/cdk/dialog';
 import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon'
+import { MatIconModule } from '@angular/material/icon';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component'
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { MatIconModule } from '@angular/material/icon'
     RoundbtnComponent,
     DialogComponent,
     DialogFactoryComponent,
+    DeleteDialogComponent,
   ],
   imports: [
     BrowserModule,

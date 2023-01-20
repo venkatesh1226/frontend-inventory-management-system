@@ -1,0 +1,13 @@
+<div mat-dialog-title class="dialog-title">
+    <h2>{{heading}}</h2>
+    <div class="outer" (click)="onNoClick()">
+        <div class="inner" (click)="onNoClick()">
+            <label (click)="onNoClick()">Close</label>
+        </div>
+    </div>
+</div>
+
+<mat-dialog-content>
+    <button (click)="onClickYes()">YES</button>
+    <button (click)="onNoClick()">NO</button>
+</mat-dialog-content>

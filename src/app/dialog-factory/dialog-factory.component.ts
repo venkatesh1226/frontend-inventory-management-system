@@ -31,5 +31,8 @@ export class DialogFactoryComponent implements OnInit {
   validate() { 
 
   }
+  onNoClick() { 
+    this.dialogRef.close();
+  }
 
 }

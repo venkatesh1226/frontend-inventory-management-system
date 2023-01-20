@@ -26,8 +26,8 @@ export class ProductService {
     return this.http.put<Product[]>(this.URL + "/edit-product", p);
   }
 
-  deleteProduct(pId?: number): Observable<Product[]> { 
-    return this.http.delete<Product[]>(this.URL + "/delete/" + pId);
+  deleteProduct(p: Product): Observable<void>{ 
+    return this.http.delete<void>(this.URL + "/delete/" + p.productId);
   }
 
   uploadFile(f:FormData): Observable<string> { 
