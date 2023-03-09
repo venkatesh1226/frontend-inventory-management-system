@@ -1,0 +1,27 @@
+<div mat-dialog-title class="dialog-title">
+    <h2>{{heading}}</h2>
+    <div class="outer" (click)="onNoClick()">
+        <div class="inner" (click)="onNoClick()">
+            <label (click)="onNoClick()">Close</label>
+        </div>
+    </div>
+</div>
+
+
+
+<mat-dialog-content>
+    <ng-form (ngSubmit)="submit()" class="wrapper" >
+        <div class="form-row">
+            <label>Product Name</label>
+            <label>{{name}}</label>
+        </div>
+        <div class="form-row">
+            <label>Enter order Quantity</label>
+            <input type="number" [(ngModel)]="count" name="count"/>
+        </div>
+
+        <div class="form-row">
+            <button (click)="submit()"> Place Order!</button>
+        </div>
+    </ng-form>
+</mat-dialog-content>

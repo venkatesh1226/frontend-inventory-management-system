@@ -10,6 +10,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 
 import {  MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
+import { OrderDialogComponent } from '../order-dialog/order-dialog.component';
 
 @Component({
   selector: 'app-product',
@@ -55,6 +56,16 @@ export class ProductComponent implements OnInit {
     }
     const ref = this.dialog.open(DialogComponent, this.dialogConfig);
     ref.afterClosed().subscribe(()=>(this.ngOnInit()))
+  }
+
+  placeOrder(item: Product){
+    console.log(item.productName)
+    this.dialogConfig.data={
+      product:item,
+      panelClass:'order-dialog'
+    }
+      const ref=this.dialog.open(OrderDialogComponent, this.dialogConfig);
+      ref.afterClosed().subscribe(()=>(this.ngOnInit()));
   }
 
   viewMore(item: Product) { 

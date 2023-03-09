@@ -20,6 +20,7 @@ export class FactoryService {
     let queryParams = new HttpParams();
     queryParams = queryParams.append("subscription-key",GlobalConstants.key);
     return this.http.get<Factory[]>(this.URL+"/factories",{params:queryParams});
+    
   }
 
   addFactory(f:Factory): Observable<Factory[]> { 

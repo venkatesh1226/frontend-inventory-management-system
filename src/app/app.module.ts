@@ -17,7 +17,8 @@ import { DialogFactoryComponent } from './dialog-factory/dialog-factory.componen
 import { Dialog } from '@angular/cdk/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component'
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
+import { OrderDialogComponent } from './order-dialog/order-dialog.component'
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component'
     DialogComponent,
     DialogFactoryComponent,
     DeleteDialogComponent,
+    OrderDialogComponent,
   ],
   imports: [
     BrowserModule,
