@@ -3,6 +3,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { QueueClient, QueueServiceClient } from "@azure/storage-queue";
 // import AzureStorageQueue = require("@azure/storage-queue");
 import { GlobalConstants } from '../global-constants';
+import { Order } from '../model/order';
+import { OrderService } from '../services/order-service/order.service';
 
 @Component({
   selector: 'app-order-dialog',
@@ -16,7 +18,7 @@ export class OrderDialogComponent implements OnInit {
   count:number =0;
 
   constructor(private dialogRef: MatDialogRef<OrderDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: any) { 
+    @Inject(MAT_DIALOG_DATA) private data: any, private service:OrderService) { 
 
       this.name=data.product.productName;
       this.heading+=this.name;
@@ -25,24 +27,21 @@ export class OrderDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async submit(){
-    const sas: string= GlobalConstants.sas;
-    const account="assessmentstorageacc";
-    const queueName="venkatesh-orders-queue"
-    
-    const queueServiceClient = new QueueServiceClient('https://assessmentstorageacc.queue.core.windows.net'+GlobalConstants.sas)
+   submit(){
+   //call order service api
 
-    const queueClient = queueServiceClient.getQueueClient(queueName);
-
-    const order:Object={
-      product:this.data.product,
+    const order:Order={
+      pId:this.data.product.productId,
       count: this.count,
-      time: Date.now()
+      time: Date.now(),
+      status: "QUEUED"
     }
+    
+    this.service.placeOrder(order).subscribe((id)=>{
+      console.log("ORDER ID:"+id);
+      this.onNoClick();
+  });
 
-    const str=this.jsonToBase64(order);
-    const response= await queueClient.sendMessage(str);
-    console.log(response);
 
   }
 

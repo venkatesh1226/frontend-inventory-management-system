@@ -9,13 +9,14 @@
         <th>Product ID</th>
         <th>Product </th>
         <th>Quantity</th>
+        <th>Total Orders</th>
         <th colspan="4"> Operations</th>
     </tr>
     <tr *ngFor="let item of products">
         <td class="inside-table">{{item.productId}}</td>
         <td class="inside-table">{{item.productName}}</td>
         <td class="inside-table">{{item.quantity}}</td>
-
+        <td class="inside-table">{{item.orderCount}}</td>
 
         <td><button (click)="viewMore(item)">View More</button></td>
         <td><button (click)="placeOrder(item)"> Place Order </button></td>

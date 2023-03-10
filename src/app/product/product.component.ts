@@ -11,6 +11,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 import {  MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 import { OrderDialogComponent } from '../order-dialog/order-dialog.component';
+import { OrderService } from '../services/order-service/order.service';
 
 @Component({
   selector: 'app-product',
@@ -28,15 +29,28 @@ export class ProductComponent implements OnInit {
   faTrash = faTrash;
    dialogConfig = new MatDialogConfig();
 
-  constructor(private router: Router,private fService:FactoryService,private pService:ProductService,private dialog:MatDialog) {
+  constructor(private router: Router,private fService:FactoryService,private pService:ProductService,private oService:OrderService,private dialog:MatDialog) {
    }
 
   ngOnInit(): void {
     this.fid = parseInt(this.router.url.split('/')[2]);
     this.fService.getFactoryById(this.fid).subscribe((item: Factory) => (this.factory = item));
-    this.pService.getProducts(this.fid).subscribe((items: Product[]) => (this.products = items));
+    this.pService.getProducts(this.fid).subscribe((items: Product[]) => {
+      this.products = items;
+      for(let i=0;i<this.products?.length;i++){
+        if(this.products[i].productId&&this.products[i]){
+        this.oService.countOrders(this.products[i].productId!).subscribe((item:Number)=>{
+          (this.products![i])!.orderCount=item;
+        });
+      }
+      }
+    });
+
+  
     this.dialogConfig.autoFocus = true;
   }
+
+
 
   add() { 
 

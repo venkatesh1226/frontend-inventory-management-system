@@ -4,5 +4,6 @@ export interface Product {
     quantity: number,
     description: string,
     factoryId: number,
-    picLink:string
+    picLink:string,
+    orderCount?:Number
 }
